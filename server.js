@@ -4,8 +4,21 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
 	cors: {
 		origin: "*",
+		methods: ["GET", "POST"],
 	},
 });
+
+// io.use((socket, next) => {
+// 	const customHeaderValue = socket.request.headers["custom-header"];
+
+// 	const validValues = ["value1", "value2", "value3"];
+
+// 	if (validValues.includes(customHeaderValue)) {
+// 		return next();
+// 	} else {
+// 		return next(new Error("Invalid custom header"));
+// 	}
+// });
 
 io.on("connection", (socket) => {
 	console.log("Client connected", socket.id, socket.rooms);
