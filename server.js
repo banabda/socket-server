@@ -42,6 +42,7 @@ io
 		} else if (token == process.env.TOKENMURAHNIH) {
 			app_name = "murahnih";
 		} else {
+			console.log("Client try to connect", socket);
 			const err = new Error("not authorized");
 			err.data = { success: false, content: "Please retry later", status: 403 };
 			return next(err);
